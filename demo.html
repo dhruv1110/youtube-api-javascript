@@ -7,13 +7,25 @@
 <script src="api.js"></script>
 </head>
 
-<body onload="load();">
+<body>
 	<center>
 		<h1>YouTube API Demo</h1>
 		<hr />
-		Paste YouTube URL below<br />
-		<input type="text" size="100" id="url" />&nbsp;&nbsp;
-		<button onclick="getData();">Get Data</button><br />
+        <table cellpadding="5" cellspacing="5" style="width:756px;">
+        	<tr>
+            	<td>Developer Key</td>
+                <td><input type="text" size="60" id="key" required="required" /></td>
+            </tr>
+            <tr>
+            	<td>URL</td>
+                <td><input type="text" size="60" id="url" required="required" /></td>
+            </tr>
+            <tr>
+            	<td></td>
+                <td><button id="call">Get Data</button></td>
+            </tr>
+        </table>   
+        
         <table cellpadding="5" cellspacing="5">
         	<tr>
             	<td>
@@ -26,20 +38,51 @@
                 </td>
             </tr>
         </table>
+        <hr />
+        <div id="embed" style="width:756px; display:none;" align="left">
+        	<ol>
+            	<li>Normal player<br /><br />
+                	<div id="normalPlayer"></div><br /><br />
+                </li>
+            	<li>Not displaying suggesting video embed player<br /><br />
+                	<div id="suggestedPlayer"></div><br /><br />
+                </li>
+            	<li>Hide player controls embed player<br /><br />
+                	<div id="controlsPlayer"></div><br /><br />
+                </li>
+            	<li>Hide player title ans share embed player<br /><br />
+                	<div id="actionPlayer"></div><br /><br />
+                </li>
+            	<li>Custom size 200*100<br /><br />
+                	<div id="custom200Player"></div><br /><br />
+                </li>
+            	<li>Custom size 500*200<br /><br />
+                	<div id="custom500Player"></div><br /><br />
+                </li>
+            	<li>Custom size 700*500<br /><br />
+                	<div id="custom700Player"></div><br /><br />
+                </li>
+            </ol>
+        </div>
 	</center>
 <script type="text/javascript">
-//var youtube = new youtube();
-function load(){
-console.log("url " + youtube.yt_privacy_embed_url);
-youtube.init("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
-}
+
 $( document ).ready(function() {
-	$("#url").change(function() {
-		var data = youtube.getVideoData($(this).val());
-		console.log(JSON.stringify(data));
+	$("#call").click(function() {
+		youtube.init($("#key").val());
+		var data = youtube.getVideoData($("#url").val());
 		$("#thumbnail").attr("src",data.thumbnails.default.url);
 		$("#videoTitle").html(data.title);
-		$("#details").html("Uploaded by " + data.channelTitle);
+		$("#details").html("Uploaded by " + data.channelTitle + "<br>===============<br>Views : " + data.viewCount + " Likes : " + data.likeCount + " Dislikes : " + data.dislikeCount + "<br>===============<br>" + data.description);
+		
+		$("#normalPlayer").html(youtube.getEmbedPlayer($("#url").val()));
+		$("#suggestedPlayer").html(youtube.getEmbedPlayer($("#url").val(),false));
+		$("#controlsPlayer").html(youtube.getEmbedPlayer($("#url").val(),true,false));
+		$("#actionPlayer").html(youtube.getEmbedPlayer($("#url").val(),true,true,false));
+		$("#custom200Player").html(youtube.getEmbedPlayer($("#url").val(),true,true,true,false,200,100));
+		$("#custom500Player").html(youtube.getEmbedPlayer($("#url").val(),true,true,true,false,500,200));
+		$("#custom700Player").html(youtube.getEmbedPlayer($("#url").val(),true,true,true,false,700,500));
+		$("#embed").css("display","block");
 	});
 });
 </script>
