@@ -121,7 +121,6 @@ function youtube(){
 		var xmlHttp = new XMLHttpRequest();
 		xmlHttp.open( "GET", api_url, false );
 		xmlHttp.send( null );
-		console.log(xmlHttp.responseText);
 		return youtube.parseYouTubeVideoData(JSON.parse(xmlHttp.responseText));
 	}
 	
