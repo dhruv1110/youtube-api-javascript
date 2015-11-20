@@ -13,7 +13,7 @@
 		<hr />
 		Paste YouTube URL below<br />
 		<input type="text" size="100" id="url" />&nbsp;&nbsp;
-		<button onclick="getData();"></button><br />
+		<button onclick="getData();">Get Data</button><br />
         <table cellpadding="5" cellspacing="5">
         	<tr>
             	<td>
@@ -34,11 +34,10 @@ console.log("url " + youtube.yt_privacy_embed_url);
 youtube.init("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
 }
 $( document ).ready(function() {
-	$("#details").html(youtube.getEmbedPlayer("https://www.youtube.com/watch?v=qIKRXYAJVsY"));
 	$("#url").change(function() {
 		var data = youtube.getVideoData($(this).val());
-		console.log(data);
-		$("#thumbnail").attr("src",data.thumbnails.high.url);
+		console.log(JSON.stringify(data));
+		$("#thumbnail").attr("src",data.thumbnails.default.url);
 		$("#videoTitle").html(data.title);
 		$("#details").html("Uploaded by " + data.channelTitle);
 	});
