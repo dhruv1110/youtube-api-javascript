@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Youtube-api-javascript by dhruv1110</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Youtube-api-javascript</h1>
+      <h2 class="project-tagline"></h2>
+      <a href="https://github.com/dhruv1110/youtube-api-javascript" class="btn">View on GitHub</a>
+      <a href="https://github.com/dhruv1110/youtube-api-javascript/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/dhruv1110/youtube-api-javascript/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h1>
+<a id="youtube-api-javascript" class="anchor" href="#youtube-api-javascript" aria-hidden="true"><span class="octicon octicon-link"></span></a>youtube-api-javascript</h1>
+
+<p>This API used for fetching data from YouTube like Video details, channel details, list of popular videos. This also helps in getting embed player HTML with various configuration.</p>
+
+<h2>
+<a id="how-to-use" class="anchor" href="#how-to-use" aria-hidden="true"><span class="octicon octicon-link"></span></a>How to use</h2>
+
+<ol>
+<li>Get the Google Developer Key from Google Developer Console. Follow this link. <a href="https://developers.google.com/youtube/registering_an_application">https://developers.google.com/youtube/registering_an_application</a>
+</li>
+<li>Include the JS file in your head section</li>
+<li>Initilize API with Google developer key by writing this line</li>
+</ol>
+
+<div class="highlight highlight-source-js"><pre>youtube.init(<span class="pl-c1">YOUR_KEY</span>);</pre></div>
+
+<h3>
+<a id="getting-video-data" class="anchor" href="#getting-video-data" aria-hidden="true"><span class="octicon octicon-link"></span></a>Getting Video Data</h3>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-k">var</span> data <span class="pl-k">=</span> youtube.getVideoData(<span class="pl-c1">YOUTUBE_VIDEO_URL</span>);</pre></div>
+
+<p>This method returns JSON array of video data. This are the elements which are retrieved</p>
+
+<pre lang="javscript"><code>data.id
+data.publishedAt
+data.channelId
+data.title
+data.description
+data.thumbnails.default.url
+data.thumbnails.default.width
+data.thumbnails.default.height
+data.channelTitle
+data.tags[]
+data.categoryId
+data.liveBroadcastContent
+data.defaultAudioLanguage
+data.videoDuration
+data.dimension
+data.defination
+data.licensedContent
+data.uploadStatus
+data.privacyStatus
+data.license
+data.embeddable
+data.publicStatusViewable
+data.viewCount
+data.likeCount
+data.dislikeCount
+data.favouriteCount
+data.commentCount
+</code></pre>
+
+<h3>
+<a id="embed-player-html" class="anchor" href="#embed-player-html" aria-hidden="true"><span class="octicon octicon-link"></span></a>Embed Player HTML</h3>
+
+<div class="highlight highlight-source-js"><pre>youtube.getEmbedPlayer(<span class="pl-c1">YOUTUBE_VIDEO_URL</span>, [isDisplaySuggestedVideo <span class="pl-k">=</span> <span class="pl-c1">true</span>, isDisplayPlayerControls <span class="pl-k">=</span> <span class="pl-c1">true</span>, isDisplayPlayerActions <span class="pl-k">=</span> <span class="pl-c1">true</span>, isEnablePrivacyMode <span class="pl-k">=</span> <span class="pl-c1">false</span>, playerWidth <span class="pl-k">=</span> <span class="pl-c1">630</span>, playerHeight <span class="pl-k">=</span> <span class="pl-c1">315</span>])<span class="pl-k">:</span></pre></div>
+
+<p>Here's only first argument is mandatory, others is optional</p>
+
+<pre><code>isDisplaySuggestedVideo : default argument set to true, for displaying other videos on end
+isDisplayPlayerControls : default argument set to true, for displaying player controls like play, pause, volume, seek bar
+isDisplayPlayerActions : default argument set to true, for displaying video title and share option on load
+isEnablePrivacyMode : default argument set to false, if set to true - YouTube doesn't store information of user until video played
+playerWidth : default argument set to 560, Width of player
+playerHeight : default argument set to 315, Height of player
+</code></pre>
+
+<h3>
+<a id="embed-player-url" class="anchor" href="#embed-player-url" aria-hidden="true"><span class="octicon octicon-link"></span></a>Embed Player URL</h3>
+
+<div class="highlight highlight-source-js"><pre>youtube.getEmbedVideoUrl(<span class="pl-c1">YOUTUBE_VIDEO_URL</span>);</pre></div>
+
+<p>Visit other projects at <a href="http://dhruvpatel.net">http://dhruvpatel.net</a></p>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/dhruv1110/youtube-api-javascript">Youtube-api-javascript</a> is maintained by <a href="https://github.com/dhruv1110">dhruv1110</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
